@@ -1,4 +1,3 @@
-import React from 'react'
 import RequestSender from './RequestSender'
 import ResponseOfReq from './ResponseOfReq'
 

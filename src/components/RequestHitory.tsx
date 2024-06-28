@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaHistory } from 'react-icons/fa'
 import HistoryItem from './HistoryItem'
 
