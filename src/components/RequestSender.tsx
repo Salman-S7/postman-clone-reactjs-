@@ -1,10 +1,12 @@
-import  { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { FaPaperPlane } from "react-icons/fa6";
+import { ResponseContext } from "./MainWorkArea";
 
 const RequestSender = () => {
 
     const [method, setMethod] = useState<string>('GET');
-    const [url, setUrl] = useState<string>('')
+    const [url, setUrl] = useState<string>('');
+    const [ response, setResponse ] = useContext(ResponseContext);
 
     useEffect(() => {
         console.log(url)
@@ -12,13 +14,18 @@ const RequestSender = () => {
 
     const makeRequest = async () => {
 
-        const response = await fetch(url, {
-            method: method
-        })
+        try {
+            const response = await fetch(url, {
+              method: method,
+            });
 
-        const data = await response.json();
+            const data = await response.json();
+            console.log(data);
+            setResponse(data);
 
-        console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 
